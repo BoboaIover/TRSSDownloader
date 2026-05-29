@@ -3,6 +3,7 @@ param()
 
 Clear-Host
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName PresentationCore
 Add-Type -AssemblyName System.Windows.Forms
@@ -103,7 +104,6 @@ $global:katColor = @{
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="SS Tools" Height="760" Width="1120" WindowStyle="None"
         AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" FontFamily="Segoe UI">
-    
     <Window.Resources>
         <SolidColorBrush x:Key="BgBrush" Color="#0A0A0F" />
         <SolidColorBrush x:Key="PanelBrush" Color="#13131C" />
@@ -115,7 +115,6 @@ $global:katColor = @{
         <SolidColorBrush x:Key="TextDimBrush" Color="#8B95A8" />
         <SolidColorBrush x:Key="SuccessBrush" Color="#4ADEA0" />
         <SolidColorBrush x:Key="ErrorBrush" Color="#F85858" />
-
         <Style x:Key="NavBtnStyle" TargetType="RadioButton">
             <Setter Property="Template">
                 <Setter.Value>
@@ -136,7 +135,6 @@ $global:katColor = @{
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style x:Key="PrimaryBtn" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
             <Setter Property="Foreground" Value="White"/>
@@ -161,7 +159,6 @@ $global:katColor = @{
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style x:Key="WinBtn" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="{StaticResource TextDimBrush}"/>
@@ -182,7 +179,6 @@ $global:katColor = @{
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style x:Key="WinCloseBtn" TargetType="Button" BasedOn="{StaticResource WinBtn}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -201,7 +197,6 @@ $global:katColor = @{
             </Setter>
         </Style>
     </Window.Resources>
-    
     <Border Background="{StaticResource BgBrush}" CornerRadius="12" ClipToBounds="True" BorderBrush="#202030" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
@@ -213,7 +208,6 @@ $global:katColor = @{
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
             <Border Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource PanelBrush}" x:Name="TitleBar">
                 <Grid>
                     <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
@@ -221,43 +215,36 @@ $global:katColor = @{
                         <TextBlock Text="TOOLS" Foreground="#C0C0D0" FontWeight="SemiBold" FontSize="12" VerticalAlignment="Center" Margin="6,0,0,0"/>
                         <TextBlock Text="v2.6" Foreground="#555" FontSize="10" VerticalAlignment="Center" Margin="10,2,0,0"/>
                     </StackPanel>
-                    
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button x:Name="BtnMin" Content="—" Style="{StaticResource WinBtn}" Width="45"/>
-                        <Button x:Name="BtnMax" Content="◻" Style="{StaticResource WinBtn}" Width="45"/>
-                        <Button x:Name="BtnClose" Content="✕" Style="{StaticResource WinCloseBtn}" Width="45"/>
+                        <Button x:Name="BtnMin" Content="&#x2014;" Style="{StaticResource WinBtn}" Width="45"/>
+                        <Button x:Name="BtnMax" Content="&#x25FB;" Style="{StaticResource WinBtn}" Width="45"/>
+                        <Button x:Name="BtnClose" Content="&#x2715;" Style="{StaticResource WinCloseBtn}" Width="45"/>
                     </StackPanel>
                     <Border VerticalAlignment="Bottom" Height="1" Background="#1A1A26"/>
                 </Grid>
             </Border>
-
             <Border Grid.Row="1" Grid.Column="0" Background="{StaticResource PanelBrush}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
                         <RadioButton x:Name="TabAraclar" Content="Araclar" Style="{StaticResource NavBtnStyle}" IsChecked="True" Foreground="{StaticResource TextMainBrush}" FontSize="14"/>
                         <RadioButton x:Name="TabScriptler" Content="Scriptler" Style="{StaticResource NavBtnStyle}" Foreground="{StaticResource TextDimBrush}" FontSize="14"/>
                     </StackPanel>
-                    
                     <ScrollViewer Grid.Row="1" Margin="0,10,0,0" Padding="10,0" VerticalScrollBarVisibility="Auto">
                         <StackPanel x:Name="CategoryList"/>
                     </ScrollViewer>
-
                     <Border Grid.RowSpan="2" HorizontalAlignment="Right" Width="1" Background="#1A1A26"/>
                 </Grid>
             </Border>
-
             <ScrollViewer x:Name="MainScroller" Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Padding="20">
                 <Grid x:Name="MainContainer">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
                     <Grid Margin="10,5,10,20">
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
                             <TextBlock x:Name="CatTitle" Text="Genel Bakis" FontSize="28" FontWeight="Bold" Foreground="White"/>
@@ -265,11 +252,9 @@ $global:katColor = @{
                         </StackPanel>
                         <Button x:Name="BtnDownloadCat" Content="Kategoriyi Indir" Style="{StaticResource PrimaryBtn}" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="20,10" Visibility="Collapsed"/>
                     </Grid>
-                    
                     <WrapPanel x:Name="ItemsContainer" Grid.Row="1" ItemWidth="400" Margin="0"/>
                 </Grid>
             </ScrollViewer>
-
             <Border Grid.Row="2" Grid.ColumnSpan="2" Background="{StaticResource PanelBrush}">
                 <Border.Effect>
                     <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="0" Opacity="0.4" Direction="90"/>
@@ -280,15 +265,13 @@ $global:katColor = @{
                         <ColumnDefinition Width="30"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    
                     <StackPanel Grid.Column="0" VerticalAlignment="Center">
                         <TextBlock x:Name="StatusLabel" Text="Hazir." Foreground="{StaticResource TextDimBrush}" FontSize="13" Margin="0,0,0,10"/>
                         <Border Height="6" Background="#1C1C28" CornerRadius="3" ClipToBounds="True">
-                             <Border x:Name="ProgBar" HorizontalAlignment="Left" Width="0" Background="{StaticResource AccentBrush}" CornerRadius="3"/>
+                            <Border x:Name="ProgBar" HorizontalAlignment="Left" Width="0" Background="{StaticResource AccentBrush}" CornerRadius="3"/>
                         </Border>
                         <TextBox x:Name="LogBox" Height="65" Background="Transparent" BorderThickness="0" Margin="0,12,0,0" Foreground="{StaticResource TextDimBrush}" FontFamily="Consolas" FontSize="12" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="NoWrap"/>
                     </StackPanel>
-                    
                     <StackPanel Grid.Column="2" VerticalAlignment="Center">
                         <Button x:Name="BtnDownloadAll" Content="HEPSINI INDIR" Style="{StaticResource PrimaryBtn}" Margin="0,0,0,12" Height="45" Width="250" FontSize="14"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -321,23 +304,22 @@ $window = [Windows.Markup.XamlReader]::Load($reader)
 
 $window.FindName("TitleBar").Add_MouseLeftButtonDown({ $window.DragMove() })
 $window.FindName("BtnClose").Add_Click({ $window.Close() })
-$window.FindName("BtnMax").Add_Click({ 
+$window.FindName("BtnMax").Add_Click({
     if ($window.WindowState -eq 'Maximized') { $window.WindowState = 'Normal' }
     else { $window.WindowState = 'Maximized' }
 })
 $window.FindName("BtnMin").Add_Click({ $window.WindowState = 'Minimized' })
 
-$global:LogBox = $window.FindName("LogBox")
-$global:StatusLabel = $window.FindName("StatusLabel")
-$global:ProgBar = $window.FindName("ProgBar")
-$global:ProgBorder = $global:ProgBar.Parent
+$global:LogBox        = $window.FindName("LogBox")
+$global:StatusLabel   = $window.FindName("StatusLabel")
+$global:ProgBar       = $window.FindName("ProgBar")
+$global:ProgBorder    = $global:ProgBar.Parent
 $global:ItemsContainer = $window.FindName("ItemsContainer")
-$global:CategoryList = $window.FindName("CategoryList")
-$global:CatTitle = $window.FindName("CatTitle")
-$global:CatDesc = $window.FindName("CatDesc")
+$global:CategoryList  = $window.FindName("CategoryList")
+$global:CatTitle      = $window.FindName("CatTitle")
+$global:CatDesc       = $window.FindName("CatDesc")
 $global:BtnDownloadCat = $window.FindName("BtnDownloadCat")
 $global:BtnDownloadAll = $window.FindName("BtnDownloadAll")
-
 $global:bc = New-Object System.Windows.Media.BrushConverter
 
 function Write-Log {
@@ -371,11 +353,11 @@ function Get-ToolStatus {
 
 function Expand-ZipSafe {
     param($z, $d)
-    try { 
+    try {
         if(Test-Path $d){Remove-Item $d -Recurse -Force -EA SilentlyContinue}
         Expand-Archive $z $d -Force
         return $true
-    } catch { 
+    } catch {
         try {
             Add-Type -AN System.IO.Compression.FileSystem
             [System.IO.Compression.ZipFile]::ExtractToDirectory($z,$d)
@@ -388,17 +370,14 @@ function Start-Download {
     param($toolsList)
     $n = $toolsList.Count
     $ok = 0; $sk = 0; $er = 0
-    
     $global:BtnDownloadAll.IsEnabled = $false
     $wc = New-Object System.Net.WebClient
     [void]$wc.Headers.Add("User-Agent","Mozilla/5.0")
-    
     for($i=0; $i -lt $n; $i++) {
         $t = $toolsList[$i]
         $dir = Join-Path $global:toolsRoot $t.Klasor
         $dest = Join-Path $dir $t.Ad
         if (-not(Test-Path $dir)) { New-Item -ItemType Directory $dir -Force | Out-Null }
-        
         if (Get-ToolStatus $t) {
             Write-Log "Mevcut: $($t.Ad)"
             $sk++
@@ -406,22 +385,21 @@ function Start-Download {
             $global:StatusLabel.Text = "Indiriliyor ($($i+1)/$n): $($t.Ad)"
             Write-Log "Indiriliyor: $($t.Ad)"
             Update-Progress ($i+0.5) $n
-            
             try {
                 $wc.DownloadFile($t.Url, $dest)
                 if ($t.Tip -eq "zip") {
                     $exD = Join-Path $dir ($t.Ad -replace "\.zip$","")
                     if (Expand-ZipSafe $dest $exD) {
                         Remove-Item $dest -Force -EA SilentlyContinue
-                        Write-Log "  -> Ayiklandi"
+                        Write-Log " -> Ayiklandi"
                     } else {
-                        Write-Log "  -> AYIKLAMA HATASI"
+                        Write-Log " -> AYIKLAMA HATASI"
                     }
                 }
                 $ok++
-                Write-Log "  -> Tamamlandi"
+                Write-Log " -> Tamamlandi"
             } catch {
-                Write-Log "  -> HATA OLUSTU: $($t.Ad)"
+                Write-Log " -> HATA OLUSTU: $($t.Ad)"
                 $er++
                 if(Test-Path $dest){Remove-Item $dest -Force -EA SilentlyContinue}
             }
@@ -438,7 +416,7 @@ function Show-Overview {
     $global:CatDesc.Text = "Minecraft Screenshare (SS) ve Windows Adli Bilisim araclarini kolayca indirin."
     $global:BtnDownloadCat.Visibility = 'Collapsed'
     $global:ItemsContainer.Children.Clear()
-    
+
     $kategoriler = $global:toolList | Select-Object -ExpandProperty Klasor -Unique
     $totalAll = $global:toolList.Count
     $doneAll = @($global:toolList | Where-Object { Get-ToolStatus $_ }).Count
@@ -448,7 +426,241 @@ function Show-Overview {
         $katTools = @($global:toolList | Where-Object { $_.Klasor -eq $kat })
         $kCount = $katTools.Count
         $kDone = @($katTools | Where-Object { Get-ToolStatus $_ }).Count
+
+        $code = @"
+<Border Background="#1C1C28" CornerRadius="8" Margin="8" Height="85" Cursor="Hand" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <Border.Style>
+        <Style TargetType="Border">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#252536"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Border.Style>
+    <Grid>
+        <Border Width="4" Background="$krHex" CornerRadius="2" HorizontalAlignment="Left" Margin="0,15,0,15"/>
+        <StackPanel Margin="20,15,20,15" VerticalAlignment="Center">
+            <TextBlock Text="$kat" Foreground="White" FontSize="18" FontWeight="SemiBold"/>
+            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                <TextBlock Text="$kDone / $kCount arac hazir" Foreground="#8B95A8" FontSize="12"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Border>
+"@
+        $card = [Windows.Markup.XamlReader]::Parse($code)
+        $card.Tag = $kat
+        $card.Add_MouseLeftButtonUp({ param($sender, $e) Show-Category $sender.Tag })
+        [void]$global:ItemsContainer.Children.Add($card)
     }
 }
+
+function Show-Category {
+    param($kat)
+    $global:CatTitle.Text = $kat
+    $krHex = if ($global:katColor.ContainsKey($kat)) { $global:katColor[$kat] } else { "#888888" }
+    $global:CatTitle.Foreground = $global:bc.ConvertFromString($krHex)
+    $katTools = @($global:toolList | Where-Object { $_.Klasor -eq $kat })
+    $global:CatDesc.Text = "$($katTools.Count) arac bulunuyor."
+    $global:BtnDownloadCat.Visibility = 'Visible'
+    $global:BtnDownloadCat.Background = $global:bc.ConvertFromString($krHex)
+    $global:BtnDownloadCat.Tag = $katTools
+    $global:ItemsContainer.Children.Clear()
+
+    foreach ($t in $katTools) {
+        $inst = Get-ToolStatus $t
+        $stColor = if($inst){"#4ADEA0"}else{"#F85858"}
+        $stText  = if($inst){"Kurulu"}else{"Eksik"}
+        $btnText = if($inst){"Yenile"}else{"Indir"}
+        $btnBg   = if($inst){"#1A402A"}else{"#2A2045"}
+        $btnFg   = if($inst){"#4ADEA0"}else{"#9A72FF"}
+
+        $code = @"
+<Border Background="#1C1C28" CornerRadius="8" Margin="8" Height="100" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border.Style>
+        <Style TargetType="Border">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#222230"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Border.Style>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="90"/>
+        </Grid.ColumnDefinitions>
+        <Border Background="$stColor" Width="4" CornerRadius="2" HorizontalAlignment="Left" Margin="4,15,0,15"/>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,10,0">
+            <StackPanel Orientation="Horizontal">
+                <Border Background="#252538" CornerRadius="4" Padding="6,2" Margin="0,0,10,0">
+                    <TextBlock Text="$($t.Tip.ToUpper())" Foreground="#8B95A8" FontSize="10" FontWeight="Bold"/>
+                </Border>
+                <TextBlock Text="$($t.Ad)" Foreground="White" FontSize="16" FontWeight="SemiBold"/>
+            </StackPanel>
+            <TextBlock Text="$($t.Aciklama)" Foreground="#8B95A8" FontSize="13" Margin="0,8,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0,0,15,0">
+            <TextBlock Text="$stText" Foreground="$stColor" FontSize="11" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+        </StackPanel>
+    </Grid>
+</Border>
+"@
+        $card = [Windows.Markup.XamlReader]::Parse($code)
+
+        $btnBorder = New-Object System.Windows.Controls.Border
+        $btnBorder.Background = $global:bc.ConvertFromString($btnBg)
+        $btnBorder.CornerRadius = 6
+        $btnBorder.Cursor = [System.Windows.Input.Cursors]::Hand
+
+        $btnTxt = New-Object System.Windows.Controls.TextBlock
+        $btnTxt.Text = $btnText
+        $btnTxt.Foreground = $global:bc.ConvertFromString($btnFg)
+        $btnTxt.HorizontalAlignment = 'Center'
+        $btnTxt.VerticalAlignment = 'Center'
+        $btnTxt.Margin = [System.Windows.Thickness]::new(0,6,0,6)
+        $btnBorder.Child = $btnTxt
+        $btnBorder.Tag = $t
+        $btnBorder.Add_MouseLeftButtonDown({ param($sender, $e)
+            $tObj = $sender.Tag
+            Write-Log "$($tObj.Ad) indiriliyor..."
+            Start-Download @($tObj)
+            Show-Category $global:CatTitle.Text
+        })
+
+        $pnl = $card.Child.Children[2]
+        [void]$pnl.Children.Add($btnBorder)
+        [void]$global:ItemsContainer.Children.Add($card)
+    }
+}
+
+function Show-Scripts {
+    $global:CatTitle.Text = "Scriptler"
+    $global:CatTitle.Foreground = $global:bc.ConvertFromString("#8150FF")
+    $global:CatDesc.Text = "Harici PowerShell scriptlerini dogrudan calistirin."
+    $global:BtnDownloadCat.Visibility = 'Collapsed'
+    $global:ItemsContainer.Children.Clear()
+
+    foreach ($ps in $global:psList) {
+        $code = @"
+<Border Background="#1C1C28" CornerRadius="8" Margin="8" Height="120" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <Border.Style>
+        <Style TargetType="Border">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#222230"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Border.Style>
+    <Grid Margin="20,15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="110"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="$($ps.Ad)" Foreground="White" FontSize="18" FontWeight="SemiBold"/>
+            <TextBlock Text="by $($ps.Yazar)" Foreground="#8150FF" FontSize="11" Margin="0,2,0,8"/>
+            <TextBlock Text="$($ps.Aciklama)" Foreground="#8B95A8" FontSize="13" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</Border>
+"@
+        $card = [Windows.Markup.XamlReader]::Parse($code)
+
+        $btnBorder = New-Object System.Windows.Controls.Border
+        $btnBorder.Background = $global:bc.ConvertFromString("#8150FF")
+        $btnBorder.CornerRadius = 6
+        $btnBorder.Cursor = [System.Windows.Input.Cursors]::Hand
+        $btnBorder.SetValue([System.Windows.Controls.Grid]::ColumnProperty, 1)
+        $btnBorder.VerticalAlignment = 'Center'
+
+        $btnTxt = New-Object System.Windows.Controls.TextBlock
+        $btnTxt.Text = "Calistir"
+        $btnTxt.Foreground = $global:bc.ConvertFromString("White")
+        $btnTxt.HorizontalAlignment = 'Center'
+        $btnTxt.VerticalAlignment = 'Center'
+        $btnTxt.Margin = [System.Windows.Thickness]::new(0,10,0,10)
+        $btnBorder.Child = $btnTxt
+        $btnBorder.Tag = $ps.Url
+        $btnBorder.Add_MouseLeftButtonDown({ param($sender, $e)
+            $u = $sender.Tag
+            Write-Log "Script baslatiliyor..."
+            try {
+                Start-Process powershell.exe -ArgumentList "-NoExit","-ExecutionPolicy","Bypass","-Command","iex (irm '$u')"
+                Write-Log "Script dis pencerede acildi."
+            } catch {
+                Write-Log "Script baslatma hatasi!"
+            }
+        })
+
+        [void]$card.Child.Children.Add($btnBorder)
+        [void]$global:ItemsContainer.Children.Add($card)
+    }
+}
+
+function Build-Sidebar {
+    $global:CategoryList.Children.Clear()
+
+    $genelBtn = New-Object System.Windows.Controls.RadioButton
+    $genelBtn.Content = "Genel Bakis"
+    $genelBtn.Style = $window.Resources["NavBtnStyle"]
+    $genelBtn.GroupName = "CatNav"
+    $genelBtn.IsChecked = $true
+    $genelBtn.Foreground = $global:bc.ConvertFromString("White")
+    $genelBtn.Add_Click({ param($sender, $e) Show-Overview })
+    [void]$global:CategoryList.Children.Add($genelBtn)
+
+    $kategoriler = $global:toolList | Select-Object -ExpandProperty Klasor -Unique
+    foreach ($kat in $kategoriler) {
+        $rbtn = New-Object System.Windows.Controls.RadioButton
+        $rbtn.Content = $kat
+        $rbtn.Style = $window.Resources["NavBtnStyle"]
+        $rbtn.GroupName = "CatNav"
+        $rbtn.Foreground = $global:bc.ConvertFromString("White")
+        $rbtn.Tag = $kat
+        $rbtn.Add_Click({ param($sender, $e) Show-Category $sender.Tag })
+        [void]$global:CategoryList.Children.Add($rbtn)
+    }
+}
+
+$window.FindName("TabAraclar").Add_Click({ param($sender, $e) Build-Sidebar; Show-Overview })
+$window.FindName("TabScriptler").Add_Click({ param($sender, $e) [void]$global:CategoryList.Children.Clear(); Show-Scripts })
+
+$global:BtnDownloadCat.Add_Click({ param($sender, $e)
+    $toolsToDownload = $sender.Tag
+    Write-Log "Kategori indiriliyor..."
+    Start-Download $toolsToDownload
+    Show-Category $global:CatTitle.Text
+})
+
+$global:BtnDownloadAll.Add_Click({ param($sender, $e)
+    Write-Log "Tum araclar indiriliyor..."
+    Start-Download $global:toolList
+    if ($global:CatTitle.Text -eq "Genel Bakis") { Show-Overview }
+    elseif ($global:CatTitle.Text -eq "Scriptler") { Show-Scripts }
+    else { Show-Category $global:CatTitle.Text }
+})
+
+$window.FindName("BtnOpenFolder").Add_Click({ param($sender, $e)
+    if(-not(Test-Path $global:toolsRoot)){New-Item -ItemType Directory $global:toolsRoot -Force | Out-Null}
+    Start-Process explorer.exe $global:toolsRoot
+})
+
+$window.FindName("BtnRefresh").Add_Click({ param($sender, $e)
+    if ($global:CatTitle.Text -eq "Genel Bakis") { Show-Overview }
+    elseif ($global:CatTitle.Text -eq "Scriptler") { Show-Scripts }
+    else { Show-Category $global:CatTitle.Text }
+    Write-Log "Durum guncellendi."
+})
+
+Build-Sidebar
+Show-Overview
+
+Write-Log "SS-Tools Auto Downloader baslatildi."
+Write-Log "Kurulum konumu: $global:toolsRoot"
 
 $window.ShowDialog() | Out-Null
