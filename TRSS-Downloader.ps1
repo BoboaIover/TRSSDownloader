@@ -36,7 +36,7 @@ $global:toolList = @(
     [PSCustomObject]@{Url="https://github.com/spokwn/KernelLiveDumpTool/releases/download/v1.1/KernelLiveDumpTool.exe";Ad="KernelLiveDumpTool.exe";Klasor="Spokwn";Tip="exe";Aciklama="Kernel canli dump araci"}
     [PSCustomObject]@{Url="https://github.com/spokwn/Tool/releases/download/v1.1.2/espouken.exe";Ad="espouken.exe";Klasor="Spokwn";Tip="exe";Aciklama="Espouken analiz araci"}
     [PSCustomObject]@{Url="https://github.com/spokwn/BamDeletedKeys/releases/download/v1.0/BamDeletedKeys.exe";Ad="BamDeletedKeys.exe";Klasor="Spokwn";Tip="exe";Aciklama="Silinen BAM kayitlari"}
-    [PSCustomObject]@{Url="https://raw.githubusercontent.com/Echo-Anticheat/Echo-Journal/main/echo-journal.exe";Ad="echo-journal.exe";Klasor="Echo";Tip="exe";Aciklama="Journal analiz araci"}
+    [PSCustomObject]@{Url="https://github.com/Echo-Anticheat/Echo-Journal/raw/main/echo-journal.exe";Ad="Echo-Journal.exe";Klasor="Echo";Tip="exe";Aciklama="Journal analiz araci"}
     [PSCustomObject]@{Url="https://github.com/korkusuzadX/TR-SS-AutoDownloader/raw/main/echo%20tools/echo-userassist.exe";Ad="UserAssist.exe";Klasor="Echo";Tip="exe";Aciklama="UserAssist kayit goruntuleyici"}
     [PSCustomObject]@{Url="https://github.com/korkusuzadX/TR-SS-AutoDownloader/raw/main/echo%20tools/echo-usb.exe";Ad="UsbTool.exe";Klasor="Echo";Tip="exe";Aciklama="USB kayit analiz araci"}
     [PSCustomObject]@{Url="https://github.com/Orbdiff/PrefetchView/releases/download/v1.6.6/pv++.exe";Ad="pv++.exe";Klasor="OrbDiff";Tip="exe";Aciklama="Detayli Prefetch analiz araci"}
@@ -286,7 +286,7 @@ $global:katColor = @{
                         <Border Height="6" Background="#1C1C28" CornerRadius="3" ClipToBounds="True">
                              <Border x:Name="ProgBar" HorizontalAlignment="Left" Width="0" Background="{StaticResource AccentBrush}" CornerRadius="3"/>
                         </Border>
-                        <Box x:Name="LogBox" Height="65" Background="Transparent" BorderThickness="0" Margin="0,12,0,0" Foreground="{StaticResource TextDimBrush}" FontFamily="Consolas" FontSize="12" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="NoWrap"/>
+                        <TextBox x:Name="LogBox" Height="65" Background="Transparent" BorderThickness="0" Margin="0,12,0,0" Foreground="{StaticResource TextDimBrush}" FontFamily="Consolas" FontSize="12" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="NoWrap"/>
                     </StackPanel>
                     
                     <StackPanel Grid.Column="2" VerticalAlignment="Center">
@@ -448,3 +448,7 @@ function Show-Overview {
         $katTools = @($global:toolList | Where-Object { $_.Klasor -eq $kat })
         $kCount = $katTools.Count
         $kDone = @($katTools | Where-Object { Get-ToolStatus $_ }).Count
+    }
+}
+
+$window.ShowDialog() | Out-Null
